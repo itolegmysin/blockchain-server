@@ -19,18 +19,8 @@ module.exports = (app) => {
     const id = req.params.studentId;
     Mark.find({}, function (err, marks) {
       if (err) return console.log(err);
-      studentMarks = marks.filter(({ _id }) => _id === id);
+      studentMarks = marks.filter(({ studentId }) => studentId === id);
       res.send(studentMarks);
-    });
-  });
-
-  app.get("/api/marks/:id", function (req, res) {
-
-    const id = req.params.id;
-    Mark.findOne({ _id: id }, function (err, mark) {
-
-      if (err) return console.log(err);
-      res.send(mark);
     });
   });
 
@@ -49,7 +39,6 @@ module.exports = (app) => {
         res.send(newMark);
       });
     })
-
   });
 
   app.delete("/api/marks/:id", function (req, res) {
