@@ -1,6 +1,6 @@
 const SHA256 = require("crypto-js/sha256");
 
-const calculateHash = ({ previousHash, timestamp, data, nonce = 1 }) => SHA256(previousHash + timestamp + JSON.stringify(data) + nonce).toString();
+const calculateHash = ({ previousHash, timestamp, nonce = 1, ...data }) => SHA256(previousHash + timestamp + JSON.stringify(data) + nonce).toString();
 
 const generateGenesisBlock = ({ mark, subject, studentId }) => {
   const block = {

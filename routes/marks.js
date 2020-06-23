@@ -41,28 +41,19 @@ module.exports = (app) => {
     })
   });
 
-  app.delete("/api/marks/:id", function (req, res) {
-
-    const id = req.params.id;
-    Mark.findByIdAndDelete(id, function (err, mark) {
-
-      if (err) return console.log(err);
-      res.send(mark);
-    });
-  });
-
-  app.put("/api/marks", jsonParser, function (req, res) {
-
-    if (!req.body) return res.sendStatus(400);
-    const id = req.body.id;
-    const { course, name, speciality } = req.body;
-    const mark = new Mark({ name, course, speciality });
-
-    Mark.findOneAndUpdate({ _id: id }, mark, { new: true }, function (err, user) {
-      if (err) return console.log(err);
-      res.send(user);
-    });
-  });
+  // app.put("/api/marks", jsonParser, function (req, res) {
+  //   if (!req.body) return res.sendStatus(400);
+  //   const _id = req.body.id;
+  //   const { course, name, speciality } = req.body;
+    // const mark = new Mark(addBlock([], { _id, mark: 7, subject: 'Some subject', studentId: '5ee0f41c09bbe02e05eb8c7e' }));
+    // console.log(mark);
+    // Mark.findOneAndUpdate({ _id }, mark, function (err, mark) {
+    //   if (err) return console.log(err);
+    //   res.send(mark);
+    // });
+    // res.send(mark);
+  // });
+  // });
 
   return app;
 }
